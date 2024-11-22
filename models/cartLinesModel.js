@@ -36,7 +36,7 @@ export class cartLinesModel {
                 .from("cartlines")
                 .insert([
                     {
-                        cart_id: cartLine.cart_id,
+                        user_id: cartLine.user_id,
                         poster_id: cartLine.poster_id,
                         quantity: cartLine.quantity,
                     },
@@ -57,7 +57,7 @@ export class cartLinesModel {
             let { data, error } = await supabase
                 .from("cartlines")
                 .update({
-                    cart_id: cartLine.cart_id,
+                    user_id: cartLine.user_id,
                     poster_id: cartLine.poster_id,
                     quantity: cartLine.quantity,
                 })

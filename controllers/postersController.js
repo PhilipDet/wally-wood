@@ -10,7 +10,7 @@ postersController.get("/posters", async (req, res) => {
     res.status(200).json(data);
 });
 
-postersController.get("/posters/:id([0-9A-Za-z]*)", async (req, res) => {
+postersController.get("/posters/:id([0-9]*)", async (req, res) => {
     const poster = await postersModel.getPosterById(req.params.id);
     res.status(200).json(poster);
 });

@@ -5,6 +5,10 @@ dotenv.config();
 const app = express();
 const env = process.env;
 
+app.get("/", (req, res) => {
+    res.send("Velkommen til API");
+});
+
 import { postersController } from "./controllers/postersController.js";
 app.use(postersController);
 import { genresController } from "./controllers/genresController.js";

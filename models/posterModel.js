@@ -19,7 +19,7 @@ export class postersModel {
             let { data, error } = await supabase
                 .from("posters")
                 .select("*")
-                .eq("id", id)
+                .eq("id", parseInt(id, 10))
                 .single();
             if (error) {
                 throw new Error(error.message);
