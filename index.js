@@ -17,6 +17,10 @@ import { cartLinesController } from "./controllers/cartLinesController.js";
 app.use(cartLinesController);
 import { genPosRelController } from "./controllers/genPosRelController.js";
 app.use(genPosRelController);
+import { userRatingController } from "./controllers/userRatingController.js";
+app.use(userRatingController);
+import { userProfilesController } from "./controllers/userProfilesController.js";
+app.use(userProfilesController);
 
 app.listen(env.PORT, () => {
     console.log(`Express server kører på http://localhost:${env.PORT}`);
