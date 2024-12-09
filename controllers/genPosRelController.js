@@ -3,14 +3,12 @@ import { genPosRelModel } from "../models/genPosRelModel.js";
 
 export const genPosRelController = express.Router();
 
-genPosRelController.use(express.urlencoded({ extended: true }));
-
 genPosRelController.get("/gen-pos-rel", async (req, res) => {
-    const data = await genPosRelModel.getAllGenPosRel();
+    const data = await genPosRelModel.getAllGenPosRel(req.query);
     res.status(200).json(data);
 });
 
-genPosRelController.get("/gen-pos-rel/:id([0-9A-Za-z]*)", async (req, res) => {
+genPosRelController.get("/gen-pos-rel/:id([0-9]*)", async (req, res) => {
     const genPosRel = await genPosRelModel.getGenPosRelById(req.params.id);
     res.status(200).json(genPosRel);
 });

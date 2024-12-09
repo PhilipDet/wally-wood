@@ -1,9 +1,21 @@
 import { supabase } from "../config/supabase.js";
 
 export class postersModel {
-    static async getAllPosters() {
+    static async getAllPosters({ limit, order, asc }) {
         try {
-            let { data, error } = await supabase.from("posters").select(`*`);
+            let query = supabase.from("posters").select(`*`);
+
+            if (limit) {
+                query = query.limit(limit);
+            }
+
+            if (order) {
+                query = query.order(order, {
+                    ascending: asc === "true" ? true : false,
+                });
+            }
+
+            let { data, error } = await query;
             if (error) {
                 throw new Error(error.message);
             } else {

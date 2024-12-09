@@ -3,8 +3,6 @@ import { userProfilesModel } from "../models/userProfilesModel.js";
 
 export const userProfilesController = express.Router();
 
-userProfilesController.use(express.urlencoded({ extended: true }));
-
 userProfilesController.get("/user-profiles", async (req, res) => {
     const data = await userProfilesModel.getAllUserProfiles();
     res.status(200).json(data);

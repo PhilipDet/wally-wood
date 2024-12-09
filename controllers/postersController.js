@@ -3,10 +3,9 @@ import { postersModel } from "../models/posterModel.js";
 
 export const postersController = express.Router();
 
-postersController.use(express.urlencoded({ extended: true }));
-
 postersController.get("/posters", async (req, res) => {
-    const data = await postersModel.getAllPosters();
+    const params = req.query;
+    const data = await postersModel.getAllPosters(params);
     res.status(200).json(data);
 });
 

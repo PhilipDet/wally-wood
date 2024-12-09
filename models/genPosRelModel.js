@@ -1,11 +1,15 @@
 import { supabase } from "../config/supabase.js";
 
 export class genPosRelModel {
-    static async getAllGenPosRel() {
+    static async getAllGenPosRel(params) {
         try {
-            let { data, error } = await supabase
-                .from("genre_poster_rel")
-                .select(`*`);
+            let query = supabase.from("genre_poster_rel").select(`*`);
+
+            if (params.genre_id) {
+                query = query.eq("genre_id", params.genre_id);
+            }
+
+            let { data, error } = await query;
             if (error) {
                 throw new Error(error.message);
             } else {

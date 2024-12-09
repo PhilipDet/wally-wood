@@ -3,7 +3,9 @@ import { supabase } from "../config/supabase.js";
 export class genresModel {
     static async getAllGenres() {
         try {
-            let { data, error } = await supabase.from("genres").select(`*`);
+            let query = supabase.from("genres").select(`*`);
+
+            let { data, error } = await query;
             if (error) {
                 throw new Error(error.message);
             } else {

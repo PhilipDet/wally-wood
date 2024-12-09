@@ -3,8 +3,6 @@ import { cartLinesModel } from "../models/cartLinesModel.js";
 
 export const cartLinesController = express.Router();
 
-cartLinesController.use(express.urlencoded({ extended: true }));
-
 cartLinesController.get("/cart-lines", async (req, res) => {
     const data = await cartLinesModel.getAllCartLines();
     res.status(200).json(data);
